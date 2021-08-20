@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>리스트-열화상 양/불량 판정 프로그램</title>
+<link rel="stylesheet" type="text/css" href="css/shopping.css">
+</head>
+<body>
+	<div id="wrap" align="center">
+		<h1>열화상 양/불량 판정 프로그램</h1>
+		<table class="list">
+			<tr>
+				<td colspan="5" style="border: white; text-align: right">
+				※ 이상이 감지된 불량품 목록 입니다.<br>폐기시킬 불량품 목록을 선택하세요.</td>
+			</tr>
+			<tr>
+				<th>체크</th>
+				<th>품번</th>
+				<th>시간</th>
+			</tr>
+			<!--c:forEach var="product" items="${productList}"-->
+				<tr class="record">
+					<td>${product.code}</td>
+					<td>${product.name}</td>
+					<td>${product.price} 원</td>
+					<td><a href="productUpdate.do?code=${product.code}">폐기</a>
+					</td>
+					<td><a href="productDelete.do?code=${product.code}">메인화면</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>불량품 리스트 페이지</title>
+<link rel="stylesheet" type="text/css" href="css/shopping.css">
+</head>
+<style>
+    body{
+        margin-top: 200px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: #515F6D;
+    }
+
+	h2{
+        font-size: 40px;
+        color: white;
+        margin-bottom : 50px;
+        margin-top: 100px;
+    }
+
+	table{
+		width: 60%;
+	
+	}
+
+	td{
+		color: black;
+	}
+
+	.record{
+		background-color: white;
+		text-align: center;
+	}
+
+	th{
+		color: black;
+		background-color: #EAEAEA;
+		margin-top: 50px;
+	}
+
+	.inbutton{
+		margin-top: 50px;
+        background-color: #3498DB;
+        font-size: medium;
+        color : white;
+        font-weight: bold;
+	}
+
+	#checkboxtbl{
+		width: 50px;
+	}
+
+	#desc{
+		padding-bottom: 25px;
+		font-size: 12px;
+		font-weight: bold;
+	}
+</style>
+<body>
+	<div id="wrap" align="center">
+		<h2>열화상 양/불량 판정 프로그램</h2>
+		<form>
+		<table class="list">
+			<tr>
+				<td colspan="5" id = "desc" style="border: white; color: white; text-align: left">
+				※ 이상이 감지된 불량품 목록 입니다. 폐기시킬 불량품 목록을 선택하세요.</td>
+			</tr>
+			<tr>
+				<th id = "checkboxtbl">체크</th>
+				<th>품번</th>
+				<th>시간</th>
+			</tr>
+			<!--c:forEach var="product" items="${productList}"-->
+				
+				<!--나중에 채울부분-->
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m01</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m02</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m03</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m04</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m05</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+				<tr class="record">
+					<td><input type="checkbox"></td>
+					<td>m06</td>
+					<td>2021/00/00/00:00:00</td>
+				</tr>
+			<!--</c:forEach>-->
+		</table>
+		<input type = "submit" value ="폐기" class ="inbutton"/>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<input type = "button" value = "메인 화면" class ="inbutton"/>
+	</form>
+	</div>
+</body>
+</html>
