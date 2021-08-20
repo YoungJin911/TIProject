@@ -191,7 +191,7 @@ def run():
     # 세션생성, 로그인
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login('tmaxti1234@gmail.com', 'xizcossqyovslmup')
+    s.login('보안상 가림', '보안상 가림')
 
     # 제목, 본문
     msg = MIMEMultipart()
