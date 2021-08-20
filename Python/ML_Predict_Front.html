@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    -->
+    <title>공정 중</title>
+</head>
+
+<style>
+    body{
+        margin-top: 200px;
+        text-align: center;
+        margin: 0 auto;
+        background-color: #515F6D;
+    }
+    div{
+        text-align: center;
+        margin: 25px;
+    }
+</style>
+
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200 || xhr.status === 201) {
+		const response = JSON.parse(xhr.responseText);
+		location.href = 'http://192.168.116.15:8888/t1_db_test/defectiveListFirst.jsp';
+                console.log(response);
+                document.querySelector('#loading').style.display = 'none';
+                document.querySelector('#predict').innerHTML = `오류율 : ${response.wrongGuessRate}`;
+                const logDivList = response.logList.map((log) => `<div>${JSON.stringify(log)}</div>`);
+                document.querySelector('#log').innerHTML = logDivList.join('');
+            } else {
+                console.error(xhr.responseText);
+            }
+        }
+    };
+    xhr.open('GET', 'http://192.168.116.15:5000/modelpredict');
+    xhr.send();
+</script>
+
+<body>
+    <div>
+        <!-- <img src = "loading.gif" alt="공정 중"> -->
+        <div>
+          <div id='loading'>
+            <img src= "{{ url_for('static', filename='./loading.gif') }}" height=50px; />
+          </div>
+          <!--<div id='data'>-->
+            <!--<div id='predict'></div>-->
+            <!--<div id='log'></div>-->
+          <!--</div>-->
+        </div>
+        
+    </div>
+
+</body>
+</html>
+
