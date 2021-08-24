@@ -188,10 +188,19 @@ def run():
     ### (.txt )이메일 전송
     ##############################################
 
+    connection = cx_Oracle.connect("testuser", "testuser", "192.168.116.15:1521/XE")
+    cur = connection.cursor()
+    query_select_email = "select email from emp"
+  
+    rs3 = cur.execute(query_select_email)
+    for record3 in rs3:
+        email_addr = str(record3[0])
+
+
     # 세션생성, 로그인
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login('보안상 가림', '보안상 가림')
+    s.login(email_addr, 'xizcossqyovslmup')
 
     # 제목, 본문
     msg = MIMEMultipart()
@@ -203,5 +212,11 @@ def run():
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((attachment).read())
     encoders.encode_base64(part)
+    part.add_header('Content-Disposition', "attachment; filename= " + 'def_log.txt')
+    msg.attach(part)
 
+    # 메일 전송
+    s.sendmail(email_addr, email_addr, msg.as_string())
+    s.quit()
+    connection.close()
     return result
